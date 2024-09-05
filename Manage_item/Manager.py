@@ -21,6 +21,8 @@ class InventoryManager:
             print("not found!")
     
     def display_item(self):
+        if not self.items:
+            print("Empty")
         for item in self.items.values():
             print(item)
 
@@ -38,9 +40,13 @@ class InventoryManager:
             print("not found!")
 
     def search(self, name):
+        flag = False
         for item in self.items.values():
             if item.name == name:
                 print(item)
+                flag = True
+        if not flag:
+            print("not found!")
     def details(self):
         num = len(self.items)
         print(f"Numbers of poducts: {num}")
@@ -52,18 +58,18 @@ class InventoryManager:
         total_price = [item.price for item in self.items.values()]
         sum_prices = sum(total_price)
         print(f"Prices: {sum_prices}")
-
-m1 = InventoryManager() # {}
-#print(m1.items)
-item1 = m1.create_item("1", "B", 3, 200) # Item
-item2 = m1.create_item("2", "B", 3, 200) # Item
-m1.add_item(item1)
-m1.add_item(item2)
-#m1.display_item()
-#m1.edit_item("1")
-#m1.display_item()
-m1.search("B")
-m1.details()
-"""print(m1.items)
-m1.remove_item("1")
-print(m1.items)"""
+if __name__ == "__main__":
+    m1 = InventoryManager() # {}
+    #print(m1.items)
+    item1 = m1.create_item("1", "B", 3, 200) # Item
+    item2 = m1.create_item("2", "B", 3, 200) # Item
+    m1.add_item(item1)
+    m1.add_item(item2)
+    #m1.display_item()
+    #m1.edit_item("1")
+    #m1.display_item()
+    m1.search("B")
+    m1.details()
+    """print(m1.items)
+    m1.remove_item("1")
+    print(m1.items)"""
